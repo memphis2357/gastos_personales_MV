@@ -1,9 +1,9 @@
-<!doctype html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Listado de Transacciones</title>
+@extends('layouts.app')
+
+@section('titulo', 'lista de usuarios')
+
+@section('contenido')
+
     <style>
         table {
             width: 100%;
@@ -24,7 +24,20 @@
 <body>
 
 <div class="container">
-    <h1>Listado de Transacciones</h1>
+    <h1>Listado de Usuarios</h1>
+    <a href="{{ route('usuarios.create') }}">Crear Usuario</a>
+
+    @if(session('exito'))
+        <div>
+            <span> {{ session('exito') }}</span>
+            <span>X</span>
+        </div>
+    @endif
+
+    @empty($datos)
+        <p>No existen transacciones actualmente</p>
+    @else
+
     <table>
         <thead>
         <tr>
@@ -43,12 +56,13 @@
             <td><?= $dato['name']; ?></td>
             <td><?= $dato['email']; ?></td>
             <td><?= $dato['password']; ?></td>
-            <td><?= $dato['create_at']; ?></td>
-            <td><?= $dato['update_at']; ?></td>
+            <td><?= $dato['created_at']; ?></td>
+            <td><?= $dato['updated_at']; ?></td>
         </tr>
-        <?php endforeach; ?>
+        @endforeach
         </tbody>
     </table>
+    @endempty
 </div>
 
 <script>
@@ -56,5 +70,6 @@
         console.log("Cargó la página");
     });
 </script>
-</body>
-</html>
+
+@endsection
+
