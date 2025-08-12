@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Helpers\Usuarios;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\TransaccionesController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\ComprobantesController;
 
+
 Route::get('/', function () {return view('welcome');})
     ->name('inicio');
 
@@ -52,4 +53,6 @@ Route::post('/usuario', [UsuariosController::class, 'store'])
 //definir las 7 rutas REST, excepto las 3 mencionadas
 Route::resource('comprobantes', ComprobantesController::class)
     ->except(['show', 'edit', 'update', 'destroy']);
+
+
 
